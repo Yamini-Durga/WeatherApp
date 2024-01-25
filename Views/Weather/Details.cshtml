@@ -1,0 +1,26 @@
+﻿@model CityWeather;
+
+<!DOCTYPE html>
+<head>
+    <title>Weather App</title>
+    <link href="~/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="heading">Weather Details</h1>
+    @{
+        var time = Model.DateAndTime.ToShortTimeString();
+    }
+    <div class="detail-box">
+        <div class="weather-box">
+            <div class="weather-info">
+                <h4>@Model.CityName</h4>
+                <p>@time</p>
+            </div>
+            <div class="separator"></div>
+            <div class="temparature">
+                <h4>@Model.TemperatureFahrenheit <sup><sup>o</sup>F</sup></h4>
+            </div>
+        </div>
+        <a href="/">Back to Weather Home Page</a>
+    </div>
+</body>
