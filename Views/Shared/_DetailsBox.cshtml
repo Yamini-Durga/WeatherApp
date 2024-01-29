@@ -1,0 +1,26 @@
+﻿@model CityWeather;
+@{
+    var dt = Model.DateAndTime.ToShortDateString();
+    var time = Model.DateAndTime.ToShortTimeString();
+    var isDetails = Convert.ToBoolean(ViewData["details"]);
+}
+
+<div class="weather-info">
+    <h4>@Model.CityName</h4>
+    @{
+        if(@isDetails)
+        {
+            <p>@dt</p>
+            <p>@time</p>
+        }
+        else
+        {
+            <p>@time</p>
+            <a href="/weather/@Model.CityUniqueCode">Details</a>
+        }
+    }
+</div>
+<div class="separator"></div>
+<div class="temparature">
+    <h4>@Model.TemperatureFahrenheit <sup><sup>o</sup>F</sup></h4>
+</div>

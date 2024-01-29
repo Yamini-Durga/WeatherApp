@@ -4,6 +4,9 @@
 .heading {
     text-align: center
 }
+#id {
+    margin: 0px 10%;
+}
 .weather-box {
     display: flex;
     width: 350px;

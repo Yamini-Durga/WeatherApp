@@ -1,7 +1,8 @@
 ﻿@model List<CityWeather>;
 
 @{
-    string getBgColorName(int temp) {
+    string getBgColorName(int temp)
+    {
         string color = "";
         if (temp < 44)
             color = "blue-bg";
@@ -12,26 +13,10 @@
         return color;
     }
 }
-<!DOCTYPE html>
-<head>
-    <title>Weather App</title>
-    <link href="~/styles.css" rel="stylesheet" />
-</head>
-<body>
-    <h1 class="heading">Weather Details</h1>
-    @foreach(CityWeather weather in Model)
-    {
-        var time = weather.DateAndTime.ToShortTimeString();
-        <div class="weather-box @getBgColorName(weather.TemperatureFahrenheit)">
-            <div class="weather-info">
-                <h4>@weather.CityName</h4>
-                <p>@time</p>
-                <a href="/weather/@weather.CityUniqueCode">Details</a>
-            </div>
-            <div class="separator"></div>
-            <div class="temparature">
-                <h4>@weather.TemperatureFahrenheit <sup><sup>o</sup>F</sup></h4>
-            </div>
-        </div>
-    }
-</body>
+
+@foreach(CityWeather weather in Model)
+{
+    <div class="weather-box @getBgColorName(weather.TemperatureFahrenheit)">
+        @await Html.PartialAsync("_DetailsBox", weather)
+    </div>
+}
